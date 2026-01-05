@@ -90,4 +90,44 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+    // AJAX Form Submission
+    const contactForm = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new FormData(e.target);
+            const submitBtn = document.getElementById('submit-btn');
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Sending...';
+
+            try {
+                const response = await fetch(e.target.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status.innerHTML = "Thank you! Your message has been sent successfully. ✨";
+                    status.style.color = "var(--accent-color)";
+                    contactForm.reset();
+                } else {
+                    const errorData = await response.json();
+                    status.innerHTML = errorData.errors ? errorData.errors.map(error => error.message).join(", ") : "Oops! There was a problem submitting your form.";
+                    status.style.color = "#ff4d4d";
+                }
+            } catch (error) {
+                status.innerHTML = "Oops! Correlation failed. Please try again later.";
+                status.style.color = "#ff4d4d";
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = 'Send Message';
+            }
+        });
+    }
 });
