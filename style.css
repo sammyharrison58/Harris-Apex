@@ -115,6 +115,22 @@ body {
     font-weight: 800;
     margin-bottom: 4rem;
     letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.section-title::before {
+    content: "\f6fc";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 5px rgba(99, 102, 241, 0.5));
 }
 
 .section-title span {
@@ -644,6 +660,29 @@ footer {
 .page-header h1 {
     font-size: 3.5rem;
     margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.page-header h1::before,
+.about-text h2::before {
+    content: "\f6fc";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 0.8em;
+    background: linear-gradient(135deg, var(--accent-color), var(--primary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 5px rgba(99, 102, 241, 0.5));
+}
+
+.about-text h2 {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
 }
 
 .page-header h1 span {
